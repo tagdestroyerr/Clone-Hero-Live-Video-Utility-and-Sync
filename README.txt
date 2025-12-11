@@ -1,88 +1,48 @@
-=====================================================
-CLONE HERO VIDEO UTILITY KIT v 2.0 (FINAL STABLE)
-(DOWNLOADER, CONVERTER & AUTOMATIC INI SYNC)
-=====================================================
+Clone Hero Video Utility (CHVU)
 
-### ⚠️ DISCLAIMER ⚠️
+This utility is designed to streamline the process of finding, downloading, converting, and synchronizing videos for your Clone Hero song library.
 
-This tool is provided as-is for personal use. By using this kit, you acknowledge that you are using it at your own risk. 
-The author takes no responsibility for any issues, errors, data loss, or other problems that may arise from its use. 
-Always back up your files before running any new script.
+**STATUS: WORK IN PROGRESS (BETA)**
 
 ---
 
-### REQUIRED FILES
+## ✅ Reliably Working Features (Core Functionality)
 
-Ensure the following five files are in the same folder as this README:
+The primary automated functions are stable and functional.
 
-1.  **CH_Video_Utility.bat** (The main script you run)
-2.  **ffmpeg.exe** (The video conversion tool)
-3.  **yt-dlp.exe** (The video download tool)
-4.  **sync_ini.py** (The Python script for synchronization)
-5.  **auto_downloader.py** (The Python script for automatic download)
+| Option | Description | Status |
+| :--- | :--- | :--- |
+| **2** | **AUTOMATIC DOWNLOAD & SYNC** | **STABLE** |
+| **6** | Change Video Settings | **STABLE** |
 
-### ⚠️ IMPORTANT: PYTHON REQUIREMENT ⚠️
+### 1. Primary Function (Option 2)
 
-To use **ANY** of the Python-based options (2 or 4), you **MUST** have **Python 3.x** installed on your system. 
+**Option 2** provides the core, reliable functionality:
+* It searches for missing videos based on your song folder name.
+* It downloads the best available video/audio streams.
+* It converts the video to the required **WEBM format** (1280px wide default).
+* It runs the Python script (`sync_ini.py`) to fix video timing, loading errors, and set the video path in the `song.ini` files.
 
-Python can be downloaded from the official website. When installing, ensure the **"Add python.exe to PATH"** option is checked.
+**If you primarily rely on the automatic searching and processing, this option works perfectly.**
 
----
+### 2. Changing Video Settings (Option 6)
 
-### STEP 1: PREPARATION
-
-1.  Locate your main Clone Hero **"Songs" folder**. 
-    (The default location is usually: C:\Users\YourName\Documents\Clone Hero\Songs)
-
-### STEP 2: RUNNING THE UTILITY (Drag-and-Drop)
-
-1.  Drag the icon of your main **"Songs" folder** onto the **"CH_Video_Utility.bat"** file.
-2.  The utility will launch, set your Songs directory, and open the main menu.
+**Option 6** allows you to configure the output video encoding quality:
+* **Max Resolution Width:** (e.g., 1920 for 1080p, 1280 for 720p).
+* **Max Bitrate:** (e.g., 2M for high quality, 1M for standard).
 
 ---
 
-### STEP 3: USE THE MENU (FINAL OPTIONS)
+## ❌ Known Issues (Crashing)
 
-The utility is now optimized for **maximum compatibility** and **stable performance**.
+The following functions currently fail due to persistent Command Prompt execution errors that are under active investigation:
 
-#### 1. MANUAL DOWNLOAD (URL input, Creates WEBM)
-* Select option **1** to download a single video from a specific URL.
-* It uses the **stable compatibility encoding** to ensure the resulting `video.webm` file works perfectly in Clone Hero.
+| Option | Description | Status |
+| :--- | :--- | :--- |
+| **1** | MANUAL DOWNLOAD (URL input) | **CRASHING** |
+| **3** | FIX/CONVERT Existing MP4s to WEBM (Fallback) | **CRASHING** |
+| **4** | SYNC INI FILES ONLY | **CRASHING** |
 
-#### 2. AUTOMATIC DOWNLOAD & SYNC (RECOMMENDED)
-* Select option **2** to automate the entire process for your entire library.
-* **Action 1: Download & Convert (STABLE)**: Recursively scans all song folders, finds songs missing `video.webm`, 
-searches YouTube, downloads the best match, and converts it to a compatible `.webm` file using the robust encoding settings.
-* **Action 2: Sync INI**: Automatically runs the INI synchronization on all folders, ensuring the `video_start_time` 
-setting is correct and the `video = video.webm` line is present.
+**Please avoid using Options 1, 3, and 4 for now.** We will continue debugging these execution paths to ensure stability.
 
-#### 3. FIX/CONVERT Existing MP4s to WEBM (Fallback)
-* Select option **3** to scan all song folders and convert any *existing* `.mp4` or other incompatible video files to the compatible **`.webm`** 
-format using the stable conversion settings.
-
-#### 4. SYNC INI FILES ONLY
-* Select option **4** if you have manually added videos or charts and only need to correct the metadata. 
-This runs the synchronization script to fix the video timing and loading errors without touching any video files.
-
----
-
-### 💡 PERFORMANCE & TROUBLESHOOTING
-
-#### Why Option 2 (Automatic Download) Appears to Pause
-
-When the script displays a line like:
-`-> Searching & Downloading video for: Artist - Song Name`
-
-...the program is performing four essential, sequential steps for that single song: **Search, Download, Re-encode (Convert), and Save.**
-
-The **Re-encode (Convert)** step is CPU-intensive and necessary for compatibility. 
-The script only prints the "Download and Conversion Complete (STABLE)." line **AFTER all four steps are finished.** 
-For longer videos, please be patient and allow the script time to complete the conversion.
-
-#### If videos display a Black Screen or Do Not Load
-
-1.  **Re-run Option 2:** The current **STABLE** encoding profile fixes files that the previous, faster profile may have broken. 
-Delete the `video.webm` file for the problematic song(s) and run Option 2 again to force a stable re-conversion.
-2.  In Clone Hero, go to **Settings** → **Gameplay** and ensure **Backgrounds** is set to **Video** or **On**.
-3.  In Clone Hero, go to **Settings** → **Video** and ensure no visual effects (like "Highway Background") are blocking the video layer.
-4.  Ensure you have re-scanned your songs in Clone Hero after running the utility (**Settings** → **General** → **Scan Songs**).
+If you enjoy this or this was useful to you please consider supporting me by sending coffee money :) https://buymeacoffee.com/tagdestroyerr
